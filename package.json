@@ -1,7 +1,7 @@
 {
   "name": "poc1-food-review-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "bootcam Driven TS POC project",
   "type": "module",
   "scripts": {
     "dev": "npx nodemon src/server.ts",
