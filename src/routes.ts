@@ -6,4 +6,5 @@ export const routes = (app: Express) => {
     app.get("/health", h.health);
 
     app.get("/", h.getPlaces);
+    app.post("/", h.addPlace);
 };

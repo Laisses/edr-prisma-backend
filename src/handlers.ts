@@ -7,6 +7,11 @@ export const health = (_req: Request, res: Response) => {
 };
 
 export const getPlaces = async (_req: Request, res: Response) => {
-    const places = await r.selectPlaces();
-    res.status(200).send(places.rows);
+    const placesList = await r.selectPlaces();
+    res.status(200).send(placesList.rows);
+};
+
+export const addPlace = async (req: Request, res: Response) => {
+    const newPlace = req.body as NewPlace;
+    await r.insertPlace(newPlace);
 };
