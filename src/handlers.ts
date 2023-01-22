@@ -1,4 +1,4 @@
-import {Request, Response} from "express";
+import { Request, Response } from "express";
 import { NewPlace } from "./protocols.js";
 import * as r from "./repositories.js";
 
