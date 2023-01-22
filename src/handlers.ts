@@ -35,3 +35,11 @@ export const editRating = async (req: Request, res: Response) => {
 
     return res.sendStatus(200);
 };
+
+export const removePlace = async (req: Request, res: Response) => {
+    const {id} = req.params;
+
+    await r.deletePlace(Number(id));
+
+    return res.sendStatus(200);
+};
