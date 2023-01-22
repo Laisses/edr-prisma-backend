@@ -18,9 +18,9 @@ export const addPlace = async (req: Request, res: Response) => {
 };
 
 export const editPlace = async (req: Request, res: Response) => {
-    const {id} = req.params;
+    const { id } = req.params;
     const changes = req.body as NewPlace;
-    const newPlace: Place = {id: Number(id), ...changes};
+    const newPlace: Place = { id: Number(id), ...changes };
 
     await r.UpdatePlace(newPlace);
 
