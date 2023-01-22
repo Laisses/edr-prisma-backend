@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { NewPlace } from "./protocols.js";
+import { NewPlace, Place } from "./protocols.js";
 import * as r from "./repositories.js";
 
 export const health = (_req: Request, res: Response) => {
@@ -15,4 +15,14 @@ export const addPlace = async (req: Request, res: Response) => {
     const newPlace = req.body as NewPlace;
     await r.insertPlace(newPlace);
     return res.sendStatus(201);
+};
+
+export const editPlace = async (req: Request, res: Response) => {
+    const {id} = req.params;
+    const changes = req.body as NewPlace;
+    const newPlace: Place = {id: Number(id), ...changes};
+
+    await r.UpdatePlace(newPlace);
+
+    return res.sendStatus(200);
 };
