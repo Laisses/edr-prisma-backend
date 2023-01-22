@@ -8,7 +8,7 @@ export const health = (_req: Request, res: Response) => {
 
 export const getPlaces = async (_req: Request, res: Response) => {
     const placesList = await r.selectPlaces();
-    res.status(200).send(placesList.rows);
+    return res.status(200).send(placesList.rows);
 };
 
 export const addPlace = async (req: Request, res: Response) => {
