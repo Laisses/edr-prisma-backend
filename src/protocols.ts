@@ -2,7 +2,7 @@ export interface Place {
     id: number,
     name: string,
     category: string,
-    rating: string | null
+    rating?: string | null
 };
 
 export type NewPlace = {
