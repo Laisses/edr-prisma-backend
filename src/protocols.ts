@@ -10,3 +10,7 @@ export type NewPlace = {
     category: string,
     rating?: string | null
 };
+
+export interface CountResult {
+    count: number
+};
