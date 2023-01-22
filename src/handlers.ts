@@ -14,5 +14,5 @@ export const getPlaces = async (_req: Request, res: Response) => {
 export const addPlace = async (req: Request, res: Response) => {
     const newPlace = req.body as NewPlace;
     await r.insertPlace(newPlace);
-    res.sendStatus(201);
+    return res.sendStatus(201);
 };
