@@ -22,7 +22,16 @@ export const editPlace = async (req: Request, res: Response) => {
     const changes = req.body as NewPlace;
     const newPlace: Place = { id: Number(id), ...changes };
 
-    await r.UpdatePlace(newPlace);
+    await r.updatePlace(newPlace);
+
+    return res.sendStatus(200);
+};
+
+export const editRating = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const evaluation = req.body.rating as string;
+
+    await r.updateRatings(Number(id), evaluation);
 
     return res.sendStatus(200);
 };

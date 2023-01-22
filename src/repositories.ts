@@ -14,6 +14,10 @@ export const selectPlaceById = async (id: number): Promise<QueryResult<Place>> =
     return connection.query(`SELECT * FROM places WHERE id=$1;`, [id]);
 };
 
-export const UpdatePlace = async ({name, category, id}: Place) => {
+export const updatePlace = async ({name, category, id}: Place) => {
     return connection.query(`UPDATE places SET name=$1, category=$2 WHERE id=$3;`, [name, category, id]);
+};
+
+export const updateRatings = async (id: number, evaluation: string) => {
+    return connection.query(`UPDATE places SET rating=$1 WHERE id=$2`, [evaluation, id]);
 };
