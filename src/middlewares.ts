@@ -3,6 +3,15 @@ import { NewPlace } from "./protocols.js";
 import { validator } from "./schemas.js"
 import * as r from "./repositories.js";
 
+export const asyncError = handlerFn => async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        await handlerFn(req, res, next);
+    } catch (err) {
+        console.warn(err);
+        res.sendStatus(500);
+    }
+};
+
 export const validate = schema => (req: Request, res: Response, next: NextFunction) => {
     const payload: NewPlace = req.body;
     const { error } = validator(schema, payload);

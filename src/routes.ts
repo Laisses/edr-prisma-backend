@@ -7,7 +7,7 @@ import { Express } from "express";
 export const routes = (app: Express) => {
     app.get("/health", h.health);
 
-    app.get("/", h.getPlaces);
-    app.post("/", m.validate(s.PlaceSchema), h.addPlace);
-    app.put("/:id", m.validate(s.PlaceSchema), m.validateId, h.editPlace);
+    app.get("/", m.asyncError(h.getPlaces));
+    app.post("/", m.validate(s.PlaceSchema), m.asyncError(h.addPlace));
+    app.put("/:id", m.validate(s.PlaceSchema), m.validateId, m.asyncError(h.editPlace));
 };
