@@ -12,4 +12,6 @@ export const routes = (app: Express) => {
     app.put("/:id", m.validate(s.PlaceSchema), m.validateId, m.asyncError(h.editPlace));
     app.patch("/:id", m.validate(s.RatingSchema), m.validateId, m.asyncError(h.editRating));
     app.delete("/:id", m.validateId, m.asyncError(h.removePlace));
+
+    app.get("/analytics", m.asyncError(h.listReviews));
 };

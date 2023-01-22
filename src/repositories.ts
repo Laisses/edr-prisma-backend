@@ -1,6 +1,6 @@
 import { QueryResult } from "pg";
 import {connection} from "./database.js";
-import { Place, NewPlace } from "./protocols.js";
+import { Place, NewPlace, CountResult } from "./protocols.js";
 
 export const selectPlaces = async (): Promise<QueryResult<Place>> => {
     return connection.query(`SELECT * FROM places ORDER BY id;`);
@@ -24,4 +24,12 @@ export const updateRatings = async (id: number, evaluation: string) => {
 
 export const deletePlace = async (id: number) => {
     return connection.query(`DELETE FROM places WHERE ID=$1;`, [id]);
+};
+
+export const countPlaces = async (): Promise<QueryResult<CountResult>> => {
+    return connection.query(`SELECT COUNT(*) FROM places;`);
+};
+
+export const countReviews = async (): Promise<QueryResult<CountResult>> => {
+    return connection.query(`SELECT COUNT(rating) FROM places;`);
 };
