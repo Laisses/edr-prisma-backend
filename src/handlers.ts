@@ -29,9 +29,9 @@ export const editPlace = async (req: Request, res: Response) => {
 
 export const editRating = async (req: Request, res: Response) => {
     const { id } = req.params;
-    const evaluation = req.body.rating as string;
+    const { rating } = req.body as { rating: string };
 
-    await r.updateRatings(Number(id), evaluation);
+    await r.updateRatings(Number(id), rating);
 
     return res.sendStatus(200);
 };

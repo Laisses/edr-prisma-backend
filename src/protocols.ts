@@ -12,5 +12,5 @@ export type NewPlace = {
 };
 
 export interface CountResult {
-    count: number
+    count: string
 };
