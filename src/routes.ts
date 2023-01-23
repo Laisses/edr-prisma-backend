@@ -7,11 +7,11 @@ import { Express } from "express";
 export const routes = (app: Express) => {
     app.get("/health", h.health);
 
-    app.get("/", m.asyncError(h.getPlaces));
-    app.post("/", m.validate(s.PlaceSchema), m.asyncError(h.addPlace));
-    app.put("/:id", m.validate(s.PlaceSchema), m.validateId, m.asyncError(h.editPlace));
-    app.patch("/:id", m.validate(s.RatingSchema), m.validateId, m.asyncError(h.editRating));
-    app.delete("/:id", m.validateId, m.asyncError(h.removePlace));
+    app.get("/places", m.asyncError(h.getPlaces));
+    app.post("/places", m.validate(s.PlaceSchema), m.asyncError(h.addPlace));
+    app.put("/places/:id", m.validate(s.PlaceSchema), m.validateId, m.asyncError(h.editPlace));
+    app.patch("/places/:id", m.validate(s.RatingSchema), m.validateId, m.asyncError(h.editRating));
+    app.delete("/places/:id", m.validateId, m.asyncError(h.removePlace));
 
     app.get("/analytics", m.asyncError(h.listReviews));
 };
