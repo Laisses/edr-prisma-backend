@@ -27,15 +27,23 @@ export const selectPlaceById = (id: number) => {
     });
 };
 
-/*
-export const updatePlace = async ({ name, category, id }: Place) => {
+/* export const updatePlace = async ({ name, category, id }: Place) => {
     return connection.query(`UPDATE places SET name=$1, category=$2 WHERE id=$3;`, [name, category, id]);
+}; */
+
+export const updateRatings = async (id: number, rating: string) => {
+    return prisma.places.update({
+        where: {
+            id,
+        },
+        data: {
+            rating
+        }
+    });
 };
 
-export const updateRatings = async (id: number, evaluation: string) => {
-    return connection.query(`UPDATE places SET rating=$1 WHERE id=$2`, [evaluation, id]);
-};
 
+/*
 export const deletePlace = async (id: number) => {
     return connection.query(`DELETE FROM places WHERE ID=$1;`, [id]);
 };

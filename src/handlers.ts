@@ -17,9 +17,7 @@ export const addPlace = async (req: Request, res: Response) => {
     return res.sendStatus(201);
 };
 
-/*
-
-export const editPlace = async (req: Request, res: Response) => {
+/* export const editPlace = async (req: Request, res: Response) => {
     const { id } = req.params;
     const changes = req.body as NewPlace;
     const newPlace: Place = { id: Number(id), ...changes };
@@ -27,7 +25,8 @@ export const editPlace = async (req: Request, res: Response) => {
     await r.updatePlace(newPlace);
 
     return res.sendStatus(200);
-};
+}; */
+
 
 export const editRating = async (req: Request, res: Response) => {
     const { id } = req.params;
@@ -37,6 +36,8 @@ export const editRating = async (req: Request, res: Response) => {
 
     return res.sendStatus(200);
 };
+
+/*
 
 export const removePlace = async (req: Request, res: Response) => {
     const {id} = req.params;
