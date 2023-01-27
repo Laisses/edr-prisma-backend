@@ -1,3 +1,4 @@
+import { places } from "@prisma/client";
 import { QueryResult } from "pg";
 import { prisma } from "./database.js";
 import { Place, NewPlace, CountResult } from "./protocols.js";
@@ -18,12 +19,15 @@ export const selectPlaces = () => {
     });
 };
 
-/*
-
-export const selectPlaceById = async (id: number): Promise<QueryResult<Place>> => {
-    return connection.query(`SELECT * FROM places WHERE id=$1;`, [id]);
+export const selectPlaceById = (id: number) => {
+    return prisma.places.findUnique({
+        where: {
+            id
+        }
+    });
 };
 
+/*
 export const updatePlace = async ({ name, category, id }: Place) => {
     return connection.query(`UPDATE places SET name=$1, category=$2 WHERE id=$3;`, [name, category, id]);
 };
