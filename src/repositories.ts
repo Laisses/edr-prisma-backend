@@ -2,10 +2,6 @@ import { QueryResult } from "pg";
 import { prisma } from "./database.js";
 import { Place, NewPlace, CountResult } from "./protocols.js";
 
-/* export const selectPlaces = async (): Promise<QueryResult<Place>> => {
-    return connection.query(`SELECT * FROM places ORDER BY id;`);
-}; */
-
 export const selectPlaces = async () => {
     return await prisma.places.findMany({
         orderBy: [
