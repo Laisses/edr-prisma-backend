@@ -1,5 +1,5 @@
 import { prisma } from "./database.js";
-import { Place, NewPlace, CountResult } from "./protocols.js";
+import { Place, NewPlace } from "./protocols.js";
 
 export const selectPlaces = async () => {
     return prisma.places.findMany({
@@ -60,18 +60,10 @@ export const countPlaces = async () => {
     return prisma.places.count();
 };
 
-/* export const countReviews = async (): Promise<QueryResult<CountResult>> => {
-    return connection.query(`SELECT COUNT(rating) FROM places;`);
-};
- */
-
-//I guess...
-/* export const upsertPlace = async (place: PartialPlace) => {
-    return prisma.places.upsert({
-        where: {
-            id: place.id || 0,
-        },
-        create: place as NewPlace,
-        update: place
+export const countReviews = async () => {
+    return prisma.places.count({
+        select: {
+            rating: true
+        }
     });
-}; */
+};

@@ -43,10 +43,10 @@ export const removePlace = async (req: Request, res: Response) => {
 
 export const listReviews = async (_req: Request, res: Response) => {
     const allPlaces = await r.countPlaces();
-    //const allReviews = await r.countReviews();
+    const allReviews = await r.countReviews();
 
     return res.status(200).send({
         places: allPlaces,
-        /* reviews: allReviews.rows[0].count, */
+        reviews: allReviews.rating,
     });
 };
