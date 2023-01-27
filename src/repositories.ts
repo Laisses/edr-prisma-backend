@@ -56,16 +56,14 @@ export const deletePlace = async (id: number) => {
     });
 };
 
-
-/*
-export const countPlaces = async (): Promise<QueryResult<CountResult>> => {
-    return connection.query(`SELECT COUNT(*) FROM places;`);
+export const countPlaces = async () => {
+    return prisma.places.count();
 };
 
-export const countReviews = async (): Promise<QueryResult<CountResult>> => {
+/* export const countReviews = async (): Promise<QueryResult<CountResult>> => {
     return connection.query(`SELECT COUNT(rating) FROM places;`);
-}; */
-
+};
+ */
 
 //I guess...
 /* export const upsertPlace = async (place: PartialPlace) => {
