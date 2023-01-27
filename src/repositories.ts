@@ -3,7 +3,7 @@ import { QueryResult } from "pg";
 import { prisma } from "./database.js";
 import { Place, NewPlace, CountResult } from "./protocols.js";
 
-export const selectPlaces = () => {
+export const selectPlaces = async () => {
     return prisma.places.findMany({
         orderBy: [
             {
@@ -13,13 +13,7 @@ export const selectPlaces = () => {
     });
 };
 
- export const insertPlace = (place: NewPlace) => {
-    return prisma.places.create({
-        data: place
-    });
-};
-
-export const selectPlaceById = (id: number) => {
+export const selectPlaceById = async (id: number) => {
     return prisma.places.findUnique({
         where: {
             id
@@ -27,9 +21,23 @@ export const selectPlaceById = (id: number) => {
     });
 };
 
-/* export const updatePlace = async ({ name, category, id }: Place) => {
-    return connection.query(`UPDATE places SET name=$1, category=$2 WHERE id=$3;`, [name, category, id]);
-}; */
+export const insertPlace = (place: NewPlace) => {
+    return prisma.places.create({
+        data: place
+    });
+};
+
+export const updatePlace = async ({ name, category, id }: Place) => {
+    return prisma.places.update({
+        where: {
+            id,
+        },
+        data: {
+            name,
+            category
+        }
+    });
+};
 
 export const updateRatings = async (id: number, rating: string) => {
     return prisma.places.update({
@@ -54,4 +62,16 @@ export const countPlaces = async (): Promise<QueryResult<CountResult>> => {
 
 export const countReviews = async (): Promise<QueryResult<CountResult>> => {
     return connection.query(`SELECT COUNT(rating) FROM places;`);
+}; */
+
+
+//I guess...
+/* export const upsertPlace = async (place: PartialPlace) => {
+    return prisma.places.upsert({
+        where: {
+            id: place.id || 0,
+        },
+        create: place as NewPlace,
+        update: place
+    });
 }; */

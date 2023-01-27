@@ -17,15 +17,15 @@ export const addPlace = async (req: Request, res: Response) => {
     return res.sendStatus(201);
 };
 
-/* export const editPlace = async (req: Request, res: Response) => {
+
+export const editPlace = async (req: Request, res: Response) => {
     const { id } = req.params;
     const changes = req.body as NewPlace;
     const newPlace: Place = { id: Number(id), ...changes };
 
     await r.updatePlace(newPlace);
-
     return res.sendStatus(200);
-}; */
+};
 
 
 export const editRating = async (req: Request, res: Response) => {
@@ -33,7 +33,6 @@ export const editRating = async (req: Request, res: Response) => {
     const { rating } = req.body as { rating: string };
 
     await r.updateRatings(Number(id), rating);
-
     return res.sendStatus(200);
 };
 
