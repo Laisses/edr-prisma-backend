@@ -2,8 +2,8 @@ import { QueryResult } from "pg";
 import { prisma } from "./database.js";
 import { Place, NewPlace, CountResult } from "./protocols.js";
 
-export const selectPlaces = async () => {
-    return await prisma.places.findMany({
+export const selectPlaces = () => {
+    return prisma.places.findMany({
         orderBy: [
             {
                 name: "asc",
@@ -12,9 +12,13 @@ export const selectPlaces = async () => {
     });
 };
 
-/* export const insertPlace = async ({ name, category }: NewPlace) => {
-    return connection.query(`INSERT INTO places (name, category) VALUES ($1, $2);`, [name, category]);
+ export const insertPlace = (place: NewPlace) => {
+    return prisma.places.create({
+        data: place
+    });
 };
+
+/*
 
 export const selectPlaceById = async (id: number): Promise<QueryResult<Place>> => {
     return connection.query(`SELECT * FROM places WHERE id=$1;`, [id]);
