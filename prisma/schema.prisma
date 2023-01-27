@@ -13,12 +13,3 @@ model places {
   category String
   rating   String?
 }
-
-model public_places {
-  id       Int     @id(map: "places_pk") @default(autoincrement())
-  name     String  @unique
-  category String
-  rating   String?
-
-  @@map("public.places")
-}
