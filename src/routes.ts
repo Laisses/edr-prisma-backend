@@ -3,7 +3,6 @@ import * as m from "./middlewares.js";
 import * as s from "./schemas.js";
 import { Express } from "express";
 
-
 export const routes = (app: Express) => {
     app.get("/health", h.health);
 
