@@ -1,5 +1,3 @@
-import { places } from "@prisma/client";
-import { QueryResult } from "pg";
 import { prisma } from "./database.js";
 import { Place, NewPlace, CountResult } from "./protocols.js";
 
@@ -50,12 +48,16 @@ export const updateRatings = async (id: number, rating: string) => {
     });
 };
 
-
-/*
 export const deletePlace = async (id: number) => {
-    return connection.query(`DELETE FROM places WHERE ID=$1;`, [id]);
+    return prisma.places.delete({
+        where: {
+            id,
+        }
+    });
 };
 
+
+/*
 export const countPlaces = async (): Promise<QueryResult<CountResult>> => {
     return connection.query(`SELECT COUNT(*) FROM places;`);
 };
