@@ -8,10 +8,11 @@ export const health = (_req: Request, res: Response) => {
 
 export const getPlaces = async (_req: Request, res: Response) => {
     const placesList = await r.selectPlaces();
-    return res.status(200).send(placesList.rows);
+    //console.log("placesList", placesList)
+    return res.status(200).send(placesList);
 };
 
-export const addPlace = async (req: Request, res: Response) => {
+/* export const addPlace = async (req: Request, res: Response) => {
     const newPlace = req.body as NewPlace;
     await r.insertPlace(newPlace);
     return res.sendStatus(201);
@@ -52,4 +53,4 @@ export const listReviews = async (_req: Request, res: Response) => {
         places: allPlaces.rows[0].count,
         reviews: allReviews.rows[0].count,
     });
-};
+}; */

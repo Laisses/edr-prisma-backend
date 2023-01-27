@@ -24,7 +24,7 @@ export const validate = schema => (req: Request, res: Response, next: NextFuncti
     next();
 };
 
-export const validateId = async (req: Request, res: Response, next: NextFunction) => {
+/* export const validateId = async (req: Request, res: Response, next: NextFunction) => {
     const { id } = req.params;
     const place = await r.selectPlaceById(Number(id));
 
@@ -33,4 +33,4 @@ export const validateId = async (req: Request, res: Response, next: NextFunction
     }
 
     next();
-};
+}; */
