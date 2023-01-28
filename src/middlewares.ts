@@ -28,7 +28,7 @@ export const validateId = async (req: Request, res: Response, next: NextFunction
     const { id } = req.params;
     const place = await r.selectPlaceById(Number(id));
 
-    if (!place.rows[0]) {
+    if (!place) {
         return res.status(404).send({ message: "could not find specified place" });
     }
 
