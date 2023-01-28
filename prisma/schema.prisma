@@ -7,15 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model addresses {
-  id     Int      @id @default(autoincrement())
-  state  String
-  city   String
-  street String
-  number String?
-  places places[]
-}
-
 model categories {
   id                Int                 @id @default(autoincrement())
   name              String
@@ -26,9 +17,8 @@ model places {
   id                Int                 @id @default(autoincrement())
   name              String              @unique
   rating            String?
-  address_id        Int?
-  addresses         addresses?          @relation(fields: [address_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   places_categories places_categories[]
+  places_locations  places_locations[]
 }
 
 model places_categories {
@@ -46,4 +36,18 @@ model public_places {
   rating   String?
 
   @@map("public.places")
+}
+
+model locations {
+  id               Int                @id @default(autoincrement())
+  state            String
+  places_locations places_locations[]
+}
+
+model places_locations {
+  id          Int       @id @default(autoincrement())
+  place_id    Int
+  location_id Int
+  locations   locations @relation(fields: [location_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  places      places    @relation(fields: [place_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
