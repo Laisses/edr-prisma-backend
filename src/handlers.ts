@@ -17,15 +17,12 @@ export const addPlace = async (req: Request, res: Response) => {
     return res.sendStatus(201);
 };
 
-/*
-
 export const editPlace = async (req: Request, res: Response) => {
     const { id } = req.params;
     const changes = req.body as NewPlace;
     const newPlace: Place = { id: Number(id), ...changes };
 
     await r.updatePlace(newPlace);
-
     return res.sendStatus(200);
 };
 
@@ -34,13 +31,11 @@ export const editRating = async (req: Request, res: Response) => {
     const { rating } = req.body as { rating: string };
 
     await r.updateRatings(Number(id), rating);
-
     return res.sendStatus(200);
 };
 
 export const removePlace = async (req: Request, res: Response) => {
-    const {id} = req.params;
-
+    const { id } = req.params;
     await r.deletePlace(Number(id));
 
     return res.sendStatus(200);
@@ -51,7 +46,7 @@ export const listReviews = async (_req: Request, res: Response) => {
     const allReviews = await r.countReviews();
 
     return res.status(200).send({
-        places: allPlaces.rows[0].count,
-        reviews: allReviews.rows[0].count,
+        places: allPlaces,
+        reviews: allReviews.rating,
     });
-}; */
+};
