@@ -9,13 +9,13 @@ datasource db {
 
 model categories {
   id                Int                 @id @default(autoincrement())
-  name              String
+  name              String              @unique
   places_categories places_categories[]
 }
 
 model locations {
   id               Int                @id @default(autoincrement())
-  state            String
+  state            String             @unique
   places_locations places_locations[]
 }
 
